@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
     <script src="https://kit.fontawesome.com/41cda13e3c.js" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({
+                publicKey: "Pw8booTC_ZJ5jYt8K",
+            });
+        })();
+    </script>
 </head>
 <body>
     <section id="landing-page">
@@ -19,21 +28,21 @@
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
-                    link__hover-effect--black
+                    link__hover-effect--periwinkle
                     ">About</a>
                 </li>
                 <li class="nav__link">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
-                    link__hover-effect--black
+                    link__hover-effect--periwinkle
                     ">Projects</a>
                 </li>
                 <li class="nav__link">
                     <a href="#" class="
                     nav__link--anchor
                     link__hover-effect
-                    link__hover-effect--black
+                    link__hover-effect--periwinkle
                     ">Contact</a>
                 </li>
                 <i id="theme-toggle" class="fa-solid fa-circle-half-stroke"></i>
@@ -58,11 +67,66 @@
             </div>
         </div>
         <button class="mail__btn click">
-            <i class="fa-solid fa-envelope"></i>
+            <i class="fa-solid fa-envelope"><a href="#modal"></a></i>
         </button>
         <a href="#projects" class="scroll">
             <i class="fa-solid fa-angle-down"></i>
         </a>
+        <div id="modal" class="modal">
+            <div class="modal__half modal__about">
+                <h2 class="modal__about--title">Here's a bit more about me.</h2>
+                <h3 class="modal__about--subtitle">Frontend Software Engineer</h3>
+                <p class="modal__about--description">I am a 27-year-old, passionate <span class="purple-text">frontend software engineer</span> with a strong background in creating <span class="purple-text">visually appealing</span> and <span class="purple-text">user-friendly</span> web applications. 
+                <br>
+                With expertise in HTML, CSS, JavaScript, and modern frontend frameworks, I strive to deliver <span class="purple-text">seamless</span> and <span class="purple-text">engaging</span> digital experiences. 
+                <br>
+                I am dedicated to <span class="purple-text">continuous learning</span> and staying up-to-date with the latest industry trends to ensure that my work is <span class="purple-text">innovative</span> and <span class="purple-text">impactful</span>.</p>
+                <div class="icons">
+                    <figure class="icon__wrapper">
+                        <img src="./assets/HTML image.png" alt="HTML icon" class="icon">
+                        <span class="icon__description">HTML</span>
+                    </figure>
+                    <figure class="icon__wrapper">
+                        <img src="./assets/CSS.png" alt="CSS icon" class="icon">
+                        <span class="icon__description">CSS</span>
+                    </figure>
+                    <figure class="icon__wrapper">
+                        <img src="./assets/javascript.png" alt="JavaScript icon" class="icon">
+                        <span class="icon__description">JavaScript</span>
+                    </figure>
+                    <figure class="icon__wrapper">
+                        <img src="./assets/React-icon.svg.png" alt="React icon" class="icon">
+                        <span class="icon__description">React</span>
+                    </figure>
+                </div>
+            </div>
+            <div class="modal__half modal__contact">
+                <h2 class="modal__contact--title">Let's Connect!</h2>
+                <h3 class="modal__contact--subtitle">I'm currently open to new opportunities.</h3>
+                <form id="contact__form" onsubmit="content(event)">
+                    <div class="form__item">
+                        <label class="form__item--label" ><span class="asterisk">*</span> Name</label>
+                        <input type="text" class="contact__input" name="user_name"placeholder="" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label" ><span class="asterisk">*</span> Email</label>
+                        <input type="email" class="contact__input" name="user_email" placeholder="" required></input>
+                    </div>
+                    <div class="form__item">
+                        <label class="form__item--label" ><span class="asterisk">*</span> Message</label>
+                        <textarea name="user_message" id="" cols="30" rows="10" class="contact__input contact__message" name="message" placeholder="" required></textarea>
+                    </div>
+                    <button id="contact__submit" class="contact__btn click">Send</button>
+                </form>
+                <div class="modal__overlay modal__overlay--loading">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="modal__overlay modal__overlay--success">
+                    Thanks for reaching out! I look forward to connecting with you soon.
+                </div>
+            </div>
+            <i class="fas fa-times modal__exit click"></i>
+        </div>
     </section>
     <section id="projects">
         <div class="container">
@@ -118,5 +182,41 @@
             </div>
         </div>
     </section>
+    <footer id="footer">
+        <img id="logo-footer" src="assets/Logo2.png" alt="Logo">
+        <ul class="footer-links">
+            <li class="footer-link">
+                <a href="#" class="
+                footer-link--anchor
+                link__hover-effect
+                link__hover-effect--white
+                ">GitHub</a>
+            </li>
+            <li class="footer-link">
+                <a href="#" class="
+                footer-link--anchor
+                link__hover-effect
+                link__hover-effect--white
+                ">LinkedIn</a>
+            </li>
+            <li class="footer-link">
+                <a href="#" class="
+                footer-link--anchor
+                link__hover-effect
+                link__hover-effect--white
+                ">Contact</a>
+            </li>
+            <li class="footer-link">
+                <a href="#" class="
+                footer-link--anchor
+                link__hover-effect
+                link__hover-effect--white
+                ">Resume</a>
+            </li>
+        </ul>
+        <p class="footer-copywrite">
+            Copyright &copy; 2026 Taylor Suntken
+        </p>
+    </footer>
 </body>
 </html>

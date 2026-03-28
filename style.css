@@ -41,6 +41,7 @@ section{
 
 .click{
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .click:hover{
@@ -80,7 +81,128 @@ section{
     width: 100%;
 }
 
+nav, .scroll, .header{
+    opacity: 1;
+    visibility: visible;
+    transition: all 600ms ease;
+}
 
+.modal--open nav, .modal--open .scroll, .modal--open .header{
+    opacity: 0;
+    visibility: hidden;
+    transition: all 400ms ease;
+}
+
+/* 
+
+SUNSET THEME
+
+*/
+
+.sunset-theme section{
+    background-color: #1a1a1a;
+}
+
+.sunset-theme .purple-text,
+.sunset-theme #theme-toggle {
+    color: #ff7a59;
+}
+
+.sunset-theme .title,
+.sunset-theme .header__description,
+.sunset-theme .nav__link--anchor, 
+.sunset-theme .section__title{
+    color: #f9fafb;
+}
+
+.sunset-theme .mail__btn,
+.sunset-theme .scroll {
+    background-color: #1a1a1a;
+    color: #ff7a59; 
+}
+
+.sunset-theme #logo, 
+.sunset-theme #logo-footer{
+    visibility: hidden;
+}
+
+.sunset-theme #logo-dark,
+.sunset-theme #logo-footer-dark{
+    visibility: visible;
+}
+
+.sunset-theme .header__icons a{
+    background-color: #1a1a1a;
+    color: #ff7a59;
+}
+
+.sunset-theme .project:hover .project__background{
+    background-color: #ff7a59a9;
+}
+
+.sunset-theme .project{
+    box-shadow: #ff7a59 0px 20px 80px 0px;
+    background-color: #1a1a1a;
+}
+
+.sunset-theme .project__content,
+.sunset-theme .project__title,
+.sunset-theme .project__subtitle,
+.sunset-theme .project__description,
+.sunset-theme .project__icons,
+.sunset-theme .project__link,
+.sunset-theme .footer-link--anchor,
+.sunset-theme .footer-copywrite,
+.sunset-theme .modal__contact--title,
+.sunset-theme .modal__contact--subtitle,
+.sunset-theme .form__item--label,
+.sunset-theme .modal__exit{
+    color: #1a1a1a;
+}
+
+.sunset-theme footer,
+.sunset-theme .modal__contact,
+.sunset-theme .modal__overlay,
+.sunset-theme .contact__input{
+    background-color: #ff7a59;
+}
+
+.sunset-theme .modal__about{
+    background-color: #1a1a1a;
+    color: #f9fafb;
+}
+
+.sunset-theme .contact__btn{
+    background-color: #1a1a1a;
+    color: #ff7a59;
+    border-color: #1a1a1a;
+}
+
+.sunset-theme .contact__btn:hover{
+    background-color: transparent;
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+.sunset-theme .contact__input{
+    border-bottom: 2px solid #1a1a1a;
+    color: #1a1a1a;
+    outline-color: #1a1a1a;
+}
+
+.sunset-theme .modal__overlay--loading,
+.sunset-theme .modal__overlay--success{
+    color: #1a1a1a;
+    background-color: #ff7a59;
+}
+
+.sunset-theme .click:hover{
+    box-shadow: #ff7a59 0px 0px 5px;
+}
+
+.sunset-theme .link__hover-effect--periwinkle::after{
+    background-color: #ff7a59;
+}
 
 /* 
 
@@ -191,11 +313,22 @@ nav{
     padding: 20px;
     margin: 0 auto;
     height: 100px;
+    position: relative;
 }
 
 #logo{
     width: 75px;
     height: 75px;
+    visibility: visible;
+}
+
+#logo-dark{
+    visibility: hidden;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    top: 12px;
+    left: 19px;
 }
 
 nav ul{
@@ -246,6 +379,10 @@ MODAL
     visibility: visible;
 }
 
+body.sunset-theme.modal--open .modal{
+  box-shadow: 0px 8px 32px 0px #ff7a59 !important;
+}
+
 .modal__half{
     width: 50%;
     padding: 40px;
@@ -274,6 +411,7 @@ MODAL
     color: white;
     position: relative;
     transform: translateX(110%);
+    z-index: 0;
 }
 
 .modal__about--title{
@@ -331,7 +469,14 @@ MODAL
     transform: scale(0);
 }
 
-
+.modal__contact--wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
 
 .modal__contact--title{
     font-size: 32px;
@@ -367,18 +512,18 @@ MODAL
 #contact__form{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .contact__btn{
-    width: 100px;
+    width: 100%;
     padding: 8px;
     background-color: white;
     color: #7c8cff;
     border: 1px solid white;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 700;
     border-radius: 6px;
     transition: all 300ms ease;
@@ -400,11 +545,12 @@ MODAL
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
+    display: none;
 }
 
 .modal__overlay--loading{
     font-size: 80px;
-    z-index: -1;
 }
 
 .fa-spinner{
@@ -424,11 +570,11 @@ MODAL
     text-align: center;
     padding: 24px;
     font-size: 42px;
-    z-index: -1;
 }
 
 .modal__overlay--visible{
-    z-index: 1;
+    display: flex;
+    z-index: 2;
 }
 
 .modal__exit{
@@ -561,6 +707,7 @@ footer{
     background-color: #7c8cff;
     color: white;
     height: 35vh;
+    position: relative;
 }
 
 .footer-links{
@@ -583,4 +730,98 @@ footer{
 #logo-footer{
     width: 100px;
     height: 100px;
+}
+
+#logo-footer-dark{
+    visibility: hidden;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 69px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 
+
+shapes
+
+*/
+
+.shape--coral{
+    visibility: hidden;
+}
+
+.shape--0 {
+    position: fixed;
+    top: 15%;
+    left: 5%;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.shape--1 {
+    position: fixed;
+    top: 20%;
+    left: 80%;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.shape--2 {
+    position: fixed;
+    top: 80%;
+    left: 10%;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.shape--3 {
+    position: fixed;
+    top: 80%;
+    left: 70%;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.shape--4 {
+    position: fixed;
+    top: 32%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.shape--5 {
+    position: fixed;
+    top: 26%;
+    left: 30%;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.shape--6 {
+    position: fixed;
+    top: 60%;
+    left: 80%;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.shape--7 {
+    position: fixed;
+    top: 50%;
+    left: 10%;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.shape--8 {
+    position: fixed;
+    top: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    z-index: 0;
 }

@@ -1,17 +1,40 @@
 // template_isfvar8
 // service_v4kj6z2
 // Pw8booTC_ZJ5jYt8K
+let isModalOpen = false;
+let contrastToggle = false;
+const scaleFactor = 1 / 20;
+
+function moveBackground(event) {
+    const shapes = document.querySelectorAll(".shape");
+    const x = event.clientX * scaleFactor;
+    const y = event.clientY * scaleFactor;
+    for (let i = 0; i < shapes.length; ++i) {
+        const isOdd = i % 2 !== 0;
+        const boolIn = isOdd ? -1 : 1;
+        shapes[i].style.transform = `translate(${x * boolIn}px, ${y * boolIn}px)`;
+    }
+}
+
+function toggleContrast() {
+    contrastToggle = !contrastToggle;
+    if (contrastToggle) {
+        document.body.classList.add("sunset-theme");
+    } else {
+        document.body.classList.remove("sunset-theme");
+    }
+}
 
 function content(event) {
     event.preventDefault();
     const loading = document.querySelector(".modal__overlay--loading");
     const success = document.querySelector(".modal__overlay--success");
-    loading.classList += (" modal__overlay--visible");
+    loading.classList.add("modal__overlay--visible");
     emailjs
     .sendForm('service_v4kj6z2', 'template_isfvar8', event.target, 'Pw8booTC_ZJ5jYt8K')
     .then(() => {
         loading.classList.remove("modal__overlay--visible");
-        success.classList += (" modal__overlay--visible");
+        success.classList.add("modal__overlay--visible");
     }).catch(() => {
         loading.classList.remove("modal__overlay--visible");
         alert(
@@ -20,12 +43,11 @@ function content(event) {
     })
 }
 
-let isModalOpen = false;
 function toggleModal() {
     if (isModalOpen) {
         isModalOpen = false;
         return document.body.classList.remove("modal--open");
     }
     isModalOpen = true;
-    document.body.classList += " modal--open";
+    document.body.classList.add("modal--open");
 }
